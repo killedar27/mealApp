@@ -8,6 +8,7 @@ import HomePage from './homepage';
 // import { Login, Logout } from './authentication/BasicApp';
 import ProtectedRoute from './authentication/ProtectedRoute';
 import { Login, Logout } from './authentication/BasicApp';
+import Cart from './cart/cartShow';
 export default function RouteConfiguration(){
     return <>
 
@@ -17,7 +18,7 @@ export default function RouteConfiguration(){
             <Route path='logout' element={<Logout/>}/>
             {/* <Route path='add' element={<ProtectedRoute component={AddProduct}/>}/> */}
             <Route path='category/:categoryName' element={<CategoryDetail/>}/>
-            {/* <Route path='/abc/:xyz' element={<SomeElement/>}/>  whatever you have passed after colon will be treatedas a param and must be imported with same name in destination file*/}
+            <Route path='cart' element={<Cart/>}/>
         </Routes>
     </>
 }

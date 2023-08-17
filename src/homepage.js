@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState,useEffect } from 'react'
+import { useState,useEffect, createContext } from 'react'
 import {Button,Card} from 'react-bootstrap';
 import { Link, Navigate } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
@@ -25,8 +25,7 @@ function Cards(props) {
             <Card.Text>
                 {props.detail.strCategoryDescription.substring(0,50)}
             </Card.Text>
-            {/* <Button variant="primary" onClick={()=>{Navigate(`category/${props.detail.strCategory}`)}}>Look for detail</Button> */}
-        </Card.Body>
+            </Card.Body>
         </Card>
     </Link>
   );

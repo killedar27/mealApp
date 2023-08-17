@@ -7,13 +7,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './authentication/auth_context';
 import RouteConfiguration from './RouterCofiguration';
+import { CartProvider } from './cart/cartProvider';
 
 function App() {
   return (
     <>
     <AuthProvider>
-
-    <BrowserRouter><RouteConfiguration/></BrowserRouter>
+      <CartProvider>
+      <BrowserRouter>
+        <RouteConfiguration/>
+      </BrowserRouter>
+      </CartProvider>
     </AuthProvider>
       {/* <HomePage/> */}
     </>

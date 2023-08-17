@@ -1,18 +1,27 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import { CartContext } from "./cart/cartProvider";
+
 
 function DetailsCards(props) {
+    
+    const {addMeal, cart}=useContext(CartContext);
+    // useEffect(()=>{
+    //     console.log("cart: ", cart)
+    // },[cart])
+
+
     return (
           <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src={props.detail.strMealThumb} />
           <Card.Body>
               <Card.Title>{props.detail.strMeal}</Card.Title>
-              
+              <button className="btn" onClick={()=>{addMeal(props.detail)}}>Add to cart</button>
           </Card.Body>
           </Card>
       
@@ -37,6 +46,8 @@ export const CategoryDetail= () => {
     },[])
 
     return<>
+    <Link to="/cart">Test</Link>
+
                <Container>
        <Row>
             {
