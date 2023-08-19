@@ -9,14 +9,20 @@ import { AuthProvider } from './authentication/auth_context';
 import RouteConfiguration from './RouterCofiguration';
 import { CartProvider } from './cart/cartProvider';
 
+import Navbars from './navbar';
+import { PriceProvider } from './setPrice';
+
 function App() {
   return (
     <>
     <AuthProvider>
       <CartProvider>
+      <PriceProvider>
       <BrowserRouter>
+        <Navbars/>
         <RouteConfiguration/>
       </BrowserRouter>
+      </PriceProvider>
       </CartProvider>
     </AuthProvider>
       {/* <HomePage/> */}

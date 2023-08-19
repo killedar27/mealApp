@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import {BrowserRouter,Route,Routes,Link,Navigate} from "react-router-dom";
+import { useContext ,useState} from "react";
+import {BrowserRouter,Route,Routes,Link,Navigate,useNavigate} from "react-router-dom";
 import {AuthContext,AuthProvider} from './auth_context';
 
 
@@ -14,10 +14,19 @@ export const Home = () => {
 
 export function Login(){
     const {authenticated,login} = useContext(AuthContext)
-
+    const navigator=useNavigate()
+     const [userName, setUserName] = useState()
+     const [password, setPassword] = useState()
+     const handleLogin= ()=>{
+        login(userName,password)
+        navigator('/')
+     }
     return <>
         <h1>Login Page</h1>
-        <button onClick={login}>Login</button>
+        <input type="text" onChange={(e)=>setUserName(e.target.value)} value={userName}></input>
+        <input type="password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+        <button onClick={handleLogin}>Login</button>
+
         <h2>YOu are {authenticated ? "Logged In" : "Logged Out"}</h2>
         <Link to="/add">Add a new Product</Link>
     </>

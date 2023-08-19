@@ -4,9 +4,10 @@ export const AuthContext = createContext();
 
 
 export const AuthProvider = ({...props}) => {
-    const [authenticated,setAuthenticated]=useState(false);
+    const [authenticated,setAuthenticated]=useState(true);
 
-    const login = () => {
+    const login = (userName,password) => {
+        if(userName==='Admin' && password==='admin')
         setAuthenticated(true);
     }
 

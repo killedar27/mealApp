@@ -9,6 +9,8 @@ import HomePage from './homepage';
 import ProtectedRoute from './authentication/ProtectedRoute';
 import { Login, Logout } from './authentication/BasicApp';
 import Cart from './cart/cartShow';
+import { Component } from 'react';
+import { MealDetail } from './setPrice';
 export default function RouteConfiguration(){
     return <>
 
@@ -19,6 +21,7 @@ export default function RouteConfiguration(){
             {/* <Route path='add' element={<ProtectedRoute component={AddProduct}/>}/> */}
             <Route path='category/:categoryName' element={<CategoryDetail/>}/>
             <Route path='cart' element={<Cart/>}/>
+            <Route path='/setPrice/:idMeal' element={<MealDetail/>}/>
         </Routes>
     </>
 }

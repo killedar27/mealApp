@@ -1,19 +1,12 @@
 import axios from 'axios'
-import { useState,useEffect, createContext } from 'react'
+import { useState,useEffect, createContext, useContext } from 'react'
 import {Button,Card} from 'react-bootstrap';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate ,useNavigate} from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import { AuthContext } from './authentication/auth_context';
 
-
-const Itemcard=()=>{
-    
-
-    return <>
-        <h1></h1>
-    </>
-}
 
 function Cards(props) {
   return (
@@ -31,6 +24,7 @@ function Cards(props) {
   );
 }
 
+const CategoryContext=createContext()
 
 const HomePage= ()=>{
     
@@ -44,15 +38,21 @@ const HomePage= ()=>{
     // fn();
 
     
+    const {authenticated} = useContext(AuthContext)
+    const navigator=useNavigate()
     useEffect(() => {
-        const fn = () => {
-            const response =axios.get('https://www.themealdb.com/api/json/v1/1/categories.php').then(response=>{
-                    console.log(response.data.categories)
-                    setCategories(response.data.categories)
-                }
-            )
+        if(authenticated){
+            const fn = () => {
+                const response =axios.get('https://www.themealdb.com/api/json/v1/1/categories.php').then(response=>{
+                        console.log(response.data.categories)
+                        setCategories(response.data.categories)
+                    }
+                )
+            }
+            fn();
+        }else{
+            navigator('/login')
         }
-        fn();
     },[])
     return <>
        <Container>
@@ -60,6 +60,7 @@ const HomePage= ()=>{
             {
                 categories?.map((item,index) =><Col> <Cards detail={item}/> </Col> )
             }
+            
        </Row>
        </Container>
     </>
