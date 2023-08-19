@@ -3,14 +3,15 @@ import {BrowserRouter,Route,Routes,Redirect,Navigate} from 'react-router-dom'
 // import ProtectedRoute from '../authentication/ProtectedRoute';
 // import { Home } from '../authentication/BasicApp';
 // import { AddProduct, Login, Logout } from '../authentication/BasicApp';
-import { CategoryDetail } from './categoryDetails';
-import HomePage from './homepage';
+import { CategoryDetail } from '../categoryDetails';
+import HomePage from '../homepage';
 // import { Login, Logout } from './authentication/BasicApp';
-import ProtectedRoute from './authentication/ProtectedRoute';
-import { Login, Logout } from './authentication/BasicApp';
-import Cart from './cart/cartShow';
+import ProtectedRoute from '../authentication/ProtectedRoute';
+import { Login, Logout } from '../authentication/BasicApp';
+import Cart from '../cart/cartShow';
 import { Component } from 'react';
-import { MealDetail } from './setPrice';
+import { MealDetail } from '../setPrice';
+import Order from '../order/orderShow';
 export default function RouteConfiguration(){
     return <>
 
@@ -21,6 +22,7 @@ export default function RouteConfiguration(){
             {/* <Route path='add' element={<ProtectedRoute component={AddProduct}/>}/> */}
             <Route path='category/:categoryName' element={<CategoryDetail/>}/>
             <Route path='cart' element={<Cart/>}/>
+            <Route path='order' element={<Order/>}/>
             <Route path='/setPrice/:idMeal' element={<MealDetail/>}/>
         </Routes>
     </>

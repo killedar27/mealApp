@@ -8,12 +8,14 @@ import Container from 'react-bootstrap/Container';
 import { CartContext } from "./cart/cartProvider";
 import { AuthContext } from "./authentication/auth_context";
 import { PriceContext, PriceProvider } from "./setPrice";
+import { OrderContext,OrderProvider } from "./order/orderProvider";
 
 
 
 function DetailsCards(props) {
     
     const {addMeal, cart}=useContext(CartContext);
+    const {addOrder,order}=useContext(OrderContext)
     const {authenticated}=useContext(AuthContext);
     // useEffect(()=>{
     //     console.log("cart: ", cart)
@@ -35,6 +37,7 @@ function DetailsCards(props) {
               {
                 authenticated&&<button className="btn" onClick={()=>{navigator(`/setPrice/${props.detail.idMeal}`)}}>setPrice</button>
               }
+              <button className="btn" onClick={()=>{addOrder(props.detail)}}>Place Order</button>
           </Card.Body>
           </Card>
       
@@ -60,7 +63,7 @@ export const CategoryDetail= () => {
     },[])
 
     return<>
-    <Link to="/cart">Test</Link>
+    {/* <Link to="/cart">Cart</Link> */}
 
                <Container>
        <Row>

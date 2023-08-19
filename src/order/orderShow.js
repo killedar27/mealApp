@@ -1,25 +1,28 @@
 import React, { useContext } from "react";
 
 import { Col, Container, Row, Image, Button } from "react-bootstrap";
-import { CartContext } from "./cartProvider";
+import { OrderContext } from "./orderProvider";
+
 
 
  
 
-function Cart() {
+function Order() {
 
-  const { cart } = useContext(CartContext)
+  const { order } = useContext(OrderContext)
 
-  console.log(cart);
+  console.log(order);
 
   return (
 
     <Container className="category-container" fluid>
 
-      {cart.map((cartItem) => (
-        <CartItem item={cartItem} />
+      {order.map((orderItem) => (
+        <OrderItem item={orderItem} />
 
       ))}
+
+      {/* <Button>Order</Button> */}
 
     </Container>
 
@@ -29,9 +32,9 @@ function Cart() {
 
  
 
-function CartItem({ item }) {
+function OrderItem({ item }) {
 
-  const { removeMeal } = useContext(CartContext);
+  const { removeMeal } = useContext(OrderContext);
 
   return (
 
@@ -39,7 +42,7 @@ function CartItem({ item }) {
 
       <Row>
 
-        <div className="cart-item-container mb-5">
+        <div className="order-item-container mb-5">
 
           <Image src={item.strMealThumb} className="" />
 
@@ -49,7 +52,7 @@ function CartItem({ item }) {
 
           <Button variant="danger" onClick={() => removeMeal(item)}>
 
-            Remove from Cart
+            Remove Order
 
           </Button>
 
@@ -65,4 +68,4 @@ function CartItem({ item }) {
 
  
 
-export default Cart;
+export default Order;
